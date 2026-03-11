@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo"><h1>Admin Panel</h1></div>
+            <nav><ul><li><a href="index.html">View Store</a></li><li><span class="link-p" onclick="UserSession.logout()">Logout</span></li></ul></nav>
+        </div>
+    </header>
+    <main class="container">
+        <div class="admin-grid">
+            <div class="form-container admin-card">
+                <h3>Add New Product</h3>
+                <form id="add-product-form">
+                    <input type="text" id="p-name" placeholder="Name" required>
+                    <select id="p-type" required>
+                        <option value="Cleanser">Cleanser</option>
+                        <option value="Serum">Serum</option>
+                        <option value="Moisturizer">Moisturizer</option>
+                        <option value="Sunscreen">Sunscreen</option>
+                    </select>
+                    <input type="number" id="p-price" placeholder="Price (₱)" required>
+                    <input type="number" id="p-stock" placeholder="Stock Quantity" required>
+                    <input type="url" id="p-url" placeholder="Image URL" required>
+                    <button type="submit" class="btn full-width">Add to Inventory</button>
+                </form>
+            </div>
+
+            <div class="inventory-card">
+                <div class="flex-title">
+                    <h3>Live Inventory</h3>
+                    <button class="refresh-icon-btn" onclick="location.reload()">↻ Sync Stock</button>
+                </div>
+                <table>
+                    <thead><tr><th>Type</th><th>Name</th><th>Price</th><th>Stock</th><th>Action</th></tr></thead>
+                    <tbody id="admin-product-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        renderAdminTable();
+        document.getElementById('add-product-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            adminAddProduct(
+                document.getElementById('p-name').value, 
+                document.getElementById('p-type').value, 
+                document.getElementById('p-price').value, 
+                document.getElementById('p-stock').value, 
+                document.getElementById('p-url').value
+            );
+        });
+    </script>
+</body>
+</html>

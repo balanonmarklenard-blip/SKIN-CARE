@@ -1,0 +1,24 @@
+<main class="container">
+    <div class="checkout-grid">
+        <div class="cart-section">
+            <h2>Your Selection</h2>
+            <div id="cart-items-list" class="cart-items"></div>
+            <hr>
+            <div class="total-row">Total Amount: <b id="cart-total-amount">₱0.00</b></div>
+        </div>
+
+        <div class="form-container">
+            <h3>Checkout Details</h3>
+            <input type="text" id="order-address" placeholder="Complete Delivery Address" required>
+            <select id="order-payment">
+                <option value="GCash">GCash</option>
+                <option value="Maya">Maya</option>
+                <option value="ShopeePay">ShopeePay</option>
+            </select>
+            <button class="btn checkout-btn" onclick="placeOrder()">Place Order & Pay</button>
+        </div>
+    </div>
+    <hr>
+    <h3>My Transaction History</h3>
+    <div id="order-history"></div>
+</main>
